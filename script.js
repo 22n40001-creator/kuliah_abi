@@ -20,13 +20,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         
         const targetId = this.getAttribute('href');
-        if(targetId === '#') return;
+        if (targetId === '#') return; // kalau cuma '#' abaikan
         
         const targetElement = document.querySelector(targetId);
-        if(targetElement) {
+        if (targetElement) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
+                top: targetElement.offsetTop - 80, // offset biar gak ketutup header
+                behavior: 'smooth' // animasi smooth scroll
             });
         }
     });
@@ -42,7 +42,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 // ubah gaya header saat scroll (efek transparan jadi solid)
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
-    if(window.scrollY > 100) {
+    if (window.scrollY > 100) {
         header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
         header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
     } else {
@@ -61,8 +61,7 @@ function checkScroll() {
     
     productCards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
-        
-        if(cardTop < triggerBottom) {
+        if (cardTop < triggerBottom) {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
         }
@@ -70,8 +69,7 @@ function checkScroll() {
     
     steps.forEach(step => {
         const stepTop = step.getBoundingClientRect().top;
-        
-        if(stepTop < triggerBottom) {
+        if (stepTop < triggerBottom) {
             step.style.opacity = '1';
             step.style.transform = 'translateY(0)';
         }
