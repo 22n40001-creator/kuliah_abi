@@ -1,16 +1,20 @@
+// ambil elemen hamburger dan nav-link utama
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
+// klik hamburger → toggle menu aktif/nonaktif
 hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
+// klik salah satu link di menu → tutup menu
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
     });
 });
 
+// efek scroll halus ke section tujuan
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -28,12 +32,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// form kontak → munculkan alert saat dikirim, lalu reset form
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('Terima kasih! Pesan Anda telah berhasil dikirim.');
     this.reset();
 });
 
+// ubah gaya header saat scroll (efek transparan jadi solid)
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if(window.scrollY > 100) {
@@ -45,9 +51,11 @@ window.addEventListener('scroll', function() {
     }
 });
 
+// ambil semua elemen kartu produk & langkah (animasi muncul saat discroll)
 const productCards = document.querySelectorAll('.product-card');
 const steps = document.querySelectorAll('.step');
 
+// fungsi cek posisi scroll untuk animasi fade-in
 function checkScroll() {
     const triggerBottom = window.innerHeight * 0.8;
     
@@ -70,6 +78,7 @@ function checkScroll() {
     });
 }
 
+// set awal semua elemen belum terlihat + transisi halus
 window.addEventListener('DOMContentLoaded', () => {
     productCards.forEach(card => {
         card.style.opacity = '0';
@@ -84,8 +93,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// jalankan animasi saat scroll
 window.addEventListener('scroll', checkScroll);
 
+// form subscribe newsletter → alert + reset form
 document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = this.querySelector('input[type="email"]').value;
